@@ -20,8 +20,11 @@ gameOver = False
 snake_x = 45
 snake_y = 45
 snake_size = 15
-clock = pygame.time.clock()
+clock = pygame.time.Clock()
 fps = 30
+velocity_x = 0
+velocity_y = 0
+
 
 
 #creating game loop
@@ -32,19 +35,38 @@ while not gameExit:
         if events.type == pygame.QUIT:
                 gameExit = True
         
-        #updating-Window color 
-        gameWindow.fill(white)
-        update_game()
-
-        #drawing Snake
-        draw_snake(gameWindow,black,[snake_x,snake_y,snake_size,snake_size])
-        update_game()
-        clock.tick(fps)
-        
         #moving snake right position
-        
-        
+        if events.type == pygame.KEYDOWN:
+
+            #moving snake right position forward
+            if events.key == pygame.K_RIGHT:
+                velocity_x =  10
+                velocity_y = 0
+
+            #moving snake left position backward
+            if events.key == pygame.K_LEFT:
+                velocity_x = -10
+                velocity_y = 0
+
+            #moving snake upward position
+            if events.key == pygame.K_UP:
+                velocity_y = -10
+                velocity_x = 0
+
+            #moving snake downward position
+            if events.key == pygame.K_DOWN:
+                velocity_y = 10
+                velocity_x = 0  
     
+    snake_x += velocity_x
+    snake_y += velocity_y
+
+    #updating-Window 
+    gameWindow.fill(white)
+    draw_snake(gameWindow,black,[snake_x,snake_y,snake_size,snake_size])
+    update_game()
+    clock.tick(fps)
+
 pygame.quit()
 quit()
 
