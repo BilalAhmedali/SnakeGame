@@ -27,8 +27,8 @@ clock = pygame.time.Clock()
 fps = 30
 velocity_x = 0
 velocity_y = 0
-food_x = random.randint(0,width)
-food_y = random.randint(0,height)
+food_x = random.randint(20,width/2)
+food_y = random.randint(20,height/2)
 
 
 
