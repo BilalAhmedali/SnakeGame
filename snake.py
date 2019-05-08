@@ -9,7 +9,21 @@ pygame.display.set_caption("Snake-Game")
 gameExit = False
 gameOver = False
 
+#game features
+
+#Quit game method
+def quiteGame(game_event):
+    if game_event.type == pygame.QUIT:
+        gameExit = True
+
+
 #creating game loop
 while not gameExit:
-    pass
+    for events in pygame.event.get():
+        quiteGame(events)
     
+pygame.quit()
+quit()
+
+
++923415234310
