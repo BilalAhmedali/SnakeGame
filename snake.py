@@ -8,3 +8,8 @@ pygame.display.set_caption("Snake-Game")
 #Specifying game variables
 gameExit = False
 gameOver = False
+
+#creating game loop
+while not gameExit:
+    pass
+    
