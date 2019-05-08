@@ -3,13 +3,18 @@ import random
 x = pygame.init()
 
 #Initializing Game window
-width = 768
+width = 1024
 height = 600
 gameWindow = pygame.display.set_mode((width,height))
 pygame.display.set_caption("Snake-Game")
 update_game  = pygame.display.update
 draw_rect = pygame.draw.rect
 draw_snake = draw_rect
+
+#Background Image
+bgimg = pygame.image.load("snake.jpg")
+bgimg = pygame.transform.scale(bgimg, (width, height)).convert_alpha()
+
 
 
 #color
@@ -33,6 +38,8 @@ def plot_snake(gameWindow, color, snk_list, snake_size):
 
 
 def gameStart():
+    
+    
     #Specifying game variables
     gameExit = False
     gameOver = False
@@ -50,16 +57,14 @@ def gameStart():
     init_velocity = 5
     
 
-
-
-
     #creating game loop
     while not gameExit:
         
         #if Game over
         if gameOver:
             gameWindow.fill(white)
-            text_screen("Game Over! Press Enter To Continue", red, 60, 250)
+
+            text_screen("Game Over! Press Enter To Continue", red, 140, 250)
 
             for events in pygame.event.get():
                 if events.type == pygame.QUIT:
@@ -112,8 +117,9 @@ def gameStart():
 
             #updating-Window 
             gameWindow.fill(white)
+            gameWindow.blit(bgimg, (0, 0))
             score_sc = f"Score: {score * 10}"
-            text_screen(score_sc, red, 5, 5)
+            text_screen(score_sc, white, 5, 5)
             
             
             head = []
